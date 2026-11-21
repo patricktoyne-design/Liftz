@@ -1,139 +1,71 @@
-<!doctype html>
-<html lang="en">
-<head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
-<meta name="theme-color" content="#111318">
-<meta name="apple-mobile-web-app-capable" content="yes">
-<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-<meta name="apple-mobile-web-app-title" content="LIFT">
-<link rel="manifest" href="manifest.webmanifest">
-<link rel="apple-touch-icon" href="icon.svg">
-<title>LIFT. Workout Tracker</title>
+<!doctype html><html lang="en"><head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="theme-color" content="#111318"><meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent"><meta name="apple-mobile-web-app-title" content="LIFT">
+<link rel="manifest" href="manifest.webmanifest"><link rel="apple-touch-icon" href="icon.svg"><title>LIFT. Workout Tracker</title>
 <style>
-:root{color-scheme:dark;--bg:#0e1014;--panel:#181b22;--panel2:#20242d;--line:#2b303b;--muted:#9aa3b2;--text:#f5f6f8;--accent:#b8f36b;--green:#b8f36b;--red:#ff8b8b}
+:root{color-scheme:dark;--bg:#0e1014;--panel:#181b22;--panel2:#20242d;--line:#2b303b;--muted:#9aa3b2;--text:#f5f6f8;--accent:#b8f36b}
 *{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--text);font:15px -apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;padding:env(safe-area-inset-top) 0 env(safe-area-inset-bottom)}
-main{max-width:650px;margin:auto;padding:18px 16px 110px}.top{display:flex;align-items:center;justify-content:space-between;margin:4px 0 24px}.logo{font-size:23px;font-weight:900;letter-spacing:2px}.pill{font-size:11px;color:var(--green);border:1px solid #48622e;border-radius:30px;padding:6px 10px}
+main{max-width:650px;margin:auto;padding:18px 16px 105px}.top{display:flex;align-items:center;justify-content:space-between;margin:4px 0 24px}.logo{font-size:23px;font-weight:900;letter-spacing:2px}.pill{font-size:10px;color:var(--accent);border:1px solid #48622e;border-radius:30px;padding:6px 10px}
 h1{font-size:29px;line-height:1.1;margin:5px 0 7px}.sub{color:var(--muted);font-size:12px;letter-spacing:1.3px;text-transform:uppercase}
 .days{display:grid;grid-template-columns:repeat(5,1fr);gap:7px;margin:22px 0}.day{background:var(--panel);border:1px solid var(--line);border-radius:12px;padding:11px 2px;color:var(--muted);font-weight:700}.day.active{background:var(--accent);color:#12150e;border-color:var(--accent)}
-.progressbox,.exercise,.summary,.history{background:var(--panel);border:1px solid var(--line);border-radius:16px;padding:15px;margin:12px 0}.progressrow{display:flex;justify-content:space-between;align-items:center;font-size:13px}.bar{height:7px;background:#303541;border-radius:20px;margin-top:12px;overflow:hidden}.fill{height:100%;width:0;background:var(--accent);border-radius:20px;transition:width .2s}
+.progressbox,.exercise,.summary,.history{background:var(--panel);border:1px solid var(--line);border-radius:16px;padding:15px;margin:12px 0}.progressrow{display:flex;justify-content:space-between;align-items:center;font-size:13px}.bar{height:7px;background:#303541;border-radius:20px;margin-top:12px;overflow:hidden}.fill{height:100%;width:0;background:var(--accent);border-radius:20px}
 .ex-head{display:flex;justify-content:space-between;gap:10px;align-items:flex-start}.ex-title{font-size:17px;font-weight:750}.meta{color:var(--muted);font-size:12px;margin-top:5px}.weight{font-size:20px;font-weight:800;white-space:nowrap}.weight small{font-size:11px;color:var(--muted);font-weight:500}
-.set-head,.set-row{display:grid;grid-template-columns:42px 1fr 1fr 40px;gap:8px;align-items:center}.set-head{font-size:10px;color:var(--muted);text-transform:uppercase;letter-spacing:.8px;margin:18px 0 7px}.set-row{padding:7px 0;border-top:1px solid #292e38}.set-num{font-size:13px;color:var(--muted)}input{width:100%;background:var(--panel2);border:1px solid #353b48;border-radius:9px;color:var(--text);padding:10px 5px;text-align:center;font-size:16px;min-width:0}input:focus{outline:1px solid var(--accent)}.tick{width:34px;height:34px;border-radius:10px;border:1px solid #48505e;background:transparent;color:var(--muted);font-size:18px}.tick.done{background:var(--accent);border-color:var(--accent);color:#111}
-.note{font-size:12px;color:var(--muted);margin-top:12px;line-height:1.45}.recommend{border-radius:11px;padding:11px;margin-top:12px;background:#202a1b;color:var(--green);font-size:13px;line-height:1.45}.actions{display:flex;gap:9px;margin:18px 0}.btn{border:0;border-radius:12px;padding:13px 15px;font-weight:750;font-size:14px;background:var(--accent);color:#12150e;flex:1}.btn.secondary{background:var(--panel2);border:1px solid var(--line);color:var(--text)}.nav{position:fixed;bottom:0;left:0;right:0;background:#14171df2;border-top:1px solid var(--line);padding:10px 16px calc(10px + env(safe-area-inset-bottom));display:flex;justify-content:center;gap:10px;backdrop-filter:blur(15px)}.nav button{background:transparent;border:0;color:var(--muted);font-weight:700;padding:8px 15px}.nav button.active{color:var(--green)}
-.panel{display:none}.panel.active{display:block}.statgrid{display:grid;grid-template-columns:repeat(3,1fr);gap:8px}.stat{background:var(--panel2);border-radius:12px;padding:13px}.stat b{font-size:23px;display:block}.stat span{font-size:11px;color:var(--muted)}.small{font-size:12px;color:var(--muted)}.listitem{padding:12px 0;border-top:1px solid var(--line)}.listitem:first-child{border:0}.listitem b{display:block}.field{display:flex;justify-content:space-between;align-items:center;gap:10px;margin:12px 0}.field input{max-width:110px}.empty{color:var(--muted);text-align:center;padding:30px 10px}
-</style>
-</head>
-<body>
-<main>
-  <div class="top"><div class="logo">LIFT.</div><div class="pill">PROGRESSIVE OVERLOAD</div></div>
-  <section id="workout" class="panel active">
-    <div class="sub" id="daylabel">MONDAY · PUSH</div>
-    <h1 id="daytitle">Today's workout</h1>
-    <div class="days" id="days"></div>
-    <div class="progressbox">
-      <div class="progressrow"><b>Workout progress</b><span id="progressText">0 / 6 exercises</span></div>
-      <div class="bar"><div class="fill" id="progressFill"></div></div>
-    </div>
-    <div id="exerciseList"></div>
-    <div class="actions"><button class="btn secondary" id="resetDay">Reset today's entries</button><button class="btn" id="finishDay">Finish workout</button></div>
-  </section>
-  <section id="progress" class="panel">
-    <div class="sub">YOUR TRAINING</div><h1>Progress</h1>
-    <div class="statgrid"><div class="stat"><b id="sessions">0</b><span>Sessions logged</span></div><div class="stat"><b id="completed">0</b><span>Sets completed</span></div><div class="stat"><b id="records">0</b><span>Weight increases</span></div></div>
-    <div class="summary"><b>Progression rule</b><p class="note">Build reps within each exercise's range. When every set reaches the top of its range, the app increases the suggested weight for next time and resets the target reps to the bottom of the range. Core/bodyweight exercises progress by reps only.</p></div>
-    <div class="history" id="history"></div>
-  </section>
-  <section id="settings" class="panel">
-    <div class="sub">PERSONALISE</div><h1>Settings</h1>
-    <div class="summary"><b>Weight increments</b><p class="note">These are default jumps. Change them to match the plates, dumbbells and cable stack at your gym.</p><div id="increments"></div></div>
-    <div class="summary"><b>Data</b><p class="note">Your workouts are saved on this device/browser. Use Export regularly as a backup, especially before changing phones.</p><div class="actions"><button class="btn secondary" id="export">Export backup</button><button class="btn secondary" id="importBtn">Import backup</button><input id="importFile" type="file" accept="application/json" hidden></div><button class="btn secondary" id="clearAll" style="width:100%">Clear all workout data</button></div>
-    <div class="summary"><b>iPhone installation</b><p class="note">Once this app is hosted on a secure website, open it in Safari, tap Share, then Add to Home Screen. This folder includes the files needed for that setup.</p></div>
-  </section>
-</main>
-<nav class="nav"><button class="active" data-tab="workout">Workout</button><button data-tab="progress">Progress</button><button data-tab="settings">Settings</button></nav>
+.set-head,.set-row{display:grid;grid-template-columns:42px 1fr 40px;gap:8px;align-items:center}.set-head{font-size:10px;color:var(--muted);text-transform:uppercase;letter-spacing:.8px;margin:18px 0 7px}.set-row{padding:7px 0;border-top:1px solid #292e38}.set-num{font-size:13px;color:var(--muted)}input{width:100%;background:var(--panel2);border:1px solid #353b48;border-radius:9px;color:var(--text);padding:10px 5px;text-align:center;font-size:16px;min-width:0}input:focus{outline:1px solid var(--accent)}.tick{width:34px;height:34px;border-radius:10px;border:1px solid #48505e;background:transparent;color:var(--muted);font-size:18px}.tick.done{background:var(--accent);border-color:var(--accent);color:#111}
+.note{font-size:12px;color:var(--muted);margin-top:12px;line-height:1.45}.recommend{border-radius:11px;padding:11px;margin-top:12px;background:#202a1b;color:var(--accent);font-size:13px;line-height:1.45}.actions{display:flex;gap:9px;margin:18px 0}.btn{border:0;border-radius:12px;padding:13px 15px;font-weight:750;font-size:14px;background:var(--accent);color:#12150e;flex:1}.btn.secondary{background:var(--panel2);border:1px solid var(--line);color:var(--text)}.nav{position:fixed;bottom:0;left:0;right:0;background:#14171df2;border-top:1px solid var(--line);padding:10px 16px calc(10px + env(safe-area-inset-bottom));display:flex;justify-content:center;gap:10px;backdrop-filter:blur(15px)}.nav button{background:transparent;border:0;color:var(--muted);font-weight:700;padding:8px 15px}.nav button.active{color:var(--accent)}
+.panel{display:none}.panel.active{display:block}.statgrid{display:grid;grid-template-columns:repeat(3,1fr);gap:8px}.stat{background:var(--panel2);border-radius:12px;padding:13px}.stat b{font-size:23px;display:block}.stat span{font-size:11px;color:var(--muted)}.small{font-size:12px;color:var(--muted)}.listitem{padding:12px 0;border-top:1px solid var(--line)}.empty{color:var(--muted);text-align:center;padding:30px 10px}
+</style></head><body><main>
+<div class="top"><div class="logo">LIFT.</div><div class="pill">PROGRESSIVE OVERLOAD</div></div>
+<section id="workout" class="panel active"><div class="sub" id="daylabel"></div><h1 id="daytitle">Today's workout</h1><div class="days" id="days"></div>
+<div class="progressbox"><div class="progressrow"><b>Workout progress</b><span id="progressText">0 sets completed</span></div><div class="bar"><div class="fill" id="progressFill"></div></div></div>
+<div id="exerciseList"></div><div class="actions"><button class="btn secondary" id="resetDay">Reset today's entries</button><button class="btn" id="finishDay">Finish workout</button></div></section>
+<section id="progress" class="panel"><div class="sub">YOUR TRAINING</div><h1>Progress</h1><div class="statgrid"><div class="stat"><b id="sessions">0</b><span>Sessions logged</span></div><div class="stat"><b id="completed">0</b><span>Sets completed</span></div><div class="stat"><b id="records">0</b><span>Weight increases</span></div></div><div class="summary"><b>Your progression system</b><p class="note">Each exercise starts at your prescribed reps. Add 1 rep to the target each successful session until you reach +2 reps per set. Once every set reaches that top target, weight increases by the exercise's increment and the rep target resets to your prescribed starting reps. Bodyweight exercises build reps without adding weight.</p></div><div class="history" id="history"></div></section>
+<section id="settings" class="panel"><div class="sub">PERSONALISE</div><h1>Settings</h1><div class="summary"><b>Weight increments</b><p class="note">Adjust these default jumps to suit your available plates, dumbbells and cable stack.</p><div id="increments"></div></div><div class="summary"><b>Backup your data</b><p class="note">Your workout history is saved on this device. Export a backup regularly.</p><div class="actions"><button class="btn secondary" id="export">Export backup</button><button class="btn secondary" id="importBtn">Import backup</button><input id="importFile" type="file" accept="application/json" hidden></div></div></section>
+</main><nav class="nav"><button class="active" data-tab="workout">Workout</button><button data-tab="progress">Progress</button><button data-tab="settings">Settings</button></nav>
 <script>
-const plan = [
-{name:"Monday",label:"Push",ex:[
-["Bench Press",4,6,8,31.25,"barbell",2.5],["Incline Dumbbell Press",3,8,10,26,"dumbbell",2],
-["Seated Dumbbell Shoulder Press",3,8,10,15,"dumbbell",2],["Dumbbell Lateral Raise",3,12,15,8.5,"dumbbell",1],
-["Cable Tricep Pushdown",3,10,12,9.5,"cable",2.5],["Overhead Cable Tricep Extension",2,12,15,6.25,"cable",2.5]]},
-{name:"Tuesday",label:"Pull",ex:[
-["High Cable Lat Pulldown",4,8,12,30,"cable",2.5],["Barbell Row",3,8,10,20,"barbell",2.5],
-["One-Arm Dumbbell Row",3,10,12,26,"dumbbell",2],["High Cable Face Pull",3,12,15,13.75,"cable",2.5],
-["EZ Bar Curl",3,8,12,15,"barbell",2.5],["Cross-Body Cable Pulldown",2,12,12,6.25,"cable",2.5,true]]},
-{name:"Wednesday",label:"Legs & Abs",ex:[
-["Barbell Back Squat",4,6,8,41.25,"barbell",2.5],["Dumbbell Romanian Deadlift",3,8,10,17.5,"dumbbell",2],
-["Goblet Squat",3,10,12,20,"dumbbell",2],["Standing Calf Raises",4,12,15,45,"barbell",2.5],
-["Reverse Crunches",3,12,15,0,"bodyweight",0],["Ab Rollouts",3,6,10,0,"bodyweight",0]]},
-{name:"Thursday",label:"Upper",ex:[
-["Incline Barbell Bench Press",4,6,8,27,"barbell",2.5],["High Cable Lat Pulldown",4,8,10,30,"cable",2.5],
-["Flat Dumbbell Bench Press",3,8,10,26,"dumbbell",2],["Low Cable Seated Row",3,10,12,25,"cable",2.5],
-["Rear Delt Dumbbell Fly",3,12,15,6.25,"dumbbell",1],["Ab Rollouts",3,6,10,0,"bodyweight",0]]},
-{name:"Friday",label:"Shoulders & Arms",ex:[
-["Standing Barbell Overhead Press",3,6,8,17.5,"barbell",2.5],["Dumbbell Lateral Raise",4,12,15,8.5,"dumbbell",1],
-["EZ Bar Curl",3,10,12,15,"barbell",2.5],["Overhead Cable Tricep Extension",3,10,12,6.25,"cable",2.5],
-["Hammer Curl",3,10,12,15,"dumbbell",2],["Cable Tricep Pushdown",3,10,12,9.5,"cable",2.5],
-["Reverse Crunches",3,12,15,0,"bodyweight",0]]}
-];
-const key="lift_tracker_v1";
-let state=JSON.parse(localStorage.getItem(key)||'{"weights":{},"logs":[],"entries":{},"increments":{"barbell":2.5,"dumbbell":2,"cable":2.5}}');
-let day=0;
-function save(){localStorage.setItem(key,JSON.stringify(state))}
-function exKey(d,i){return d+"-"+i}
-function currentWeight(d,i,e){return state.weights[exKey(d,i)]??e[4]}
-function entry(d,i,s){return state.entries[exKey(d,i)+"-"+s]||{reps:"",done:false}}
-function fmt(n){return Number.isInteger(n)?String(n):String(Number(n.toFixed(2)))}
-function renderDays(){document.getElementById("days").innerHTML=plan.map((p,i)=>`<button class="day ${day===i?"active":""}" data-day="${i}">${p.name.slice(0,3).toUpperCase()}</button>`).join("");document.querySelectorAll("[data-day]").forEach(b=>b.onclick=()=>{day=+b.dataset.day;render()})}
+const plan=[{"day":"Monday","focus":"Push \u00b7 Chest, Shoulders & Triceps","items":[["Bench Press",4,8,31.25,"barbell",2.5,false],["Incline Dumbbell Press",3,8,26,"dumbbell",2,false],["Seated Dumbbell Shoulder Press",3,9,17.5,"dumbbell",2,false],["Dumbbell Lateral Raise",3,8,8.5,"dumbbell",1,false],["Cable Tricep Pushdown",3,9,10,"cable",2.5,false],["Overhead Cable Tricep Extension",2,10,7.5,"cable",2.5,false]]},{"day":"Tuesday","focus":"Pull \u00b7 Back, Rear Delts & Biceps","items":[["High Cable Lat Pulldown",4,9,22.5,"cable",2.5,false],["Barbell Row",3,10,20,"barbell",2.5,false],["One-Arm Dumbbell Row",3,11,26,"dumbbell",2,true],["High Cable Face Pull",3,9,16,"cable",2.5,false],["EZ Bar Curl",3,12,15,"barbell",2.5,false],["Cross-Body Cable Pulldown",2,12,5,"cable",2.5,true]]},{"day":"Wednesday","focus":"Legs & Abs","items":[["Barbell Back Squat",4,6,45,"barbell",2.5,false],["Dumbbell Romanian Deadlift",3,9,17.5,"dumbbell",2,false],["Goblet Squat",3,11,15,"dumbbell",2,false],["Standing Calf Raises",4,9,55,"barbell",2.5,false],["Reverse Crunches",3,10,0,"bodyweight",0,false],["Ab Rollouts",3,9,0,"bodyweight",0,false]]},{"day":"Thursday","focus":"Upper \u00b7 Chest, Back & Strength","items":[["Incline Bench Press",4,8,27.5,"barbell",2.5,false],["Cable Lat Pulldown",4,8,22.5,"cable",2.5,false],["Dumbbell Bench Press",3,9,26,"dumbbell",2,false],["Cable Seated Row",3,8,30,"cable",2.5,false],["Ab Rollouts",3,9,0,"bodyweight",0,false],["Rear Delt Dumbbell Fly",3,10,4,"dumbbell",1,false]]},{"day":"Friday","focus":"Shoulders & Arms","items":[["Barbell Overhead Press",3,8,17.5,"barbell",2.5,false],["Cable Lateral Raise",3,9,2,"cable",1,false],["Cable Curl",3,9,12.5,"cable",2.5,false],["Overhead Cable Tricep Extension",3,11,7.5,"cable",2.5,false],["Hammer Curl",3,10,16,"dumbbell",2,false],["Cable Tricep Pushdown",3,10,10,"cable",2.5,false],["Reverse Crunches",3,11,0,"bodyweight",0,false]]}];
+const KEY="lift_tracker_v2";
+let state=JSON.parse(localStorage.getItem(KEY)||'{"weights":{},"targets":{},"logs":[],"entries":{},"increments":{"barbell":2.5,"dumbbell":2,"cable":2.5}}');
+let day=(new Date().getDay()+6)%7;if(day>4)day=0;
+const id=(d,i)=>d+"-"+i, getW=(d,i,e)=>state.weights[id(d,i)]??e[3], getTarget=(d,i,e)=>state.targets[id(d,i)]??e[2];
+const getEntry=(d,i,s)=>state.entries[id(d,i)+"-"+s]||{reps:"",done:false};
+const fmt=n=>Number.isInteger(n)?String(n):String(Number(n.toFixed(2)));
+function save(){localStorage.setItem(KEY,JSON.stringify(state))}
+function renderDays(){document.getElementById("days").innerHTML=plan.map((p,i)=>`<button class="day ${day===i?"active":""}" data-day="${i}">${p.day.slice(0,3).toUpperCase()}</button>`).join("");document.querySelectorAll("[data-day]").forEach(b=>b.onclick=()=>{day=+b.dataset.day;render()})}
 function render(){
- const p=plan[day];document.getElementById("daylabel").textContent=p.name.toUpperCase()+" · "+p.label.toUpperCase();document.getElementById("daytitle").textContent=p.label;
- renderDays();
- let doneEx=0,totalSets=0,doneSets=0;
- document.getElementById("exerciseList").innerHTML=p.ex.map((e,i)=>{
-  const [name,sets,min,max,base,type,inc,unilateral]=e;const w=currentWeight(day,i,e);
-  let all=true,rows="";
-  for(let s=0;s<sets;s++){const x=entry(day,i,s);totalSets++;if(x.done)doneSets++;else all=false;
-   rows+=`<div class="set-row"><div class="set-num">Set ${s+1}</div><input aria-label="Reps set ${s+1}" type="number" min="0" max="99" placeholder="${min}–${max}" value="${x.reps}" data-reps="${i}-${s}"><div class="small" style="text-align:center">${x.done?"Logged":"Reps"}</div><button class="tick ${x.done?"done":""}" data-tick="${i}-${s}">${x.done?"✓":"○"}</button></div>`;
-  }
-  if(all)doneEx++;
-  const target=state.weights[exKey(day,i)]!==undefined?"Updated weight":"Starting weight";
-  let recommendation="";
-  if(all){
-    const reached=p.ex[i][3]===undefined?false:Array.from({length:sets},(_,s)=>Number(entry(day,i,s).reps)>=max).every(Boolean);
-    recommendation=reached&&type!=="bodyweight"?`<div class="recommend">✓ All sets hit ${max} reps. Next session: try ${fmt(w+(state.increments[type]??inc))} kg. </div>`: `<div class="recommend">✓ Exercise logged. ${type==="bodyweight"?"Keep building reps next session.":"Next session: aim to match or improve these reps."}</div>`;
-  }
-  return `<article class="exercise"><div class="ex-head"><div><div class="ex-title">${name}${unilateral?" · each side":""}</div><div class="meta">${sets} sets · ${min===max?min:min+"–"+max} reps</div></div><div class="weight">${type==="bodyweight"?"BW":fmt(w)+" kg"}<small><br>${target}</small></div></div><div class="set-head"><span>Set</span><span>Reps done</span><span>Status</span><span></span></div>${rows}${recommendation}<div class="note">Target range: ${min}–${max} reps. ${type==="bodyweight"?"Progress reps only.":`Weight jump: +${fmt(state.increments[type]??inc)} kg when all sets reach ${max}.`}</div></article>`;
+ const p=plan[day];document.getElementById("daylabel").textContent=p.day.toUpperCase()+" · "+p.focus.toUpperCase();document.getElementById("daytitle").textContent=p.focus.split(" · ")[0];renderDays();
+ let done=0,total=0,finished=0;
+ document.getElementById("exerciseList").innerHTML=p.items.map((e,i)=>{
+  const [name,sets,start,base,type,inc,uni]=e,w=getW(day,i,e),target=getTarget(day,i,e);let all=true,rows="";
+  for(let s=0;s<sets;s++){let x=getEntry(day,i,s);total++;if(x.done){done++;}else all=false;rows+=`<div class="set-row"><div class="set-num">Set ${s+1}</div><input type="number" min="0" max="99" placeholder="Target ${target}" value="${x.reps}" data-reps="${i}-${s}"><button class="tick ${x.done?"done":""}" data-tick="${i}-${s}">${x.done?"✓":"○"}</button></div>`}
+  if(all)finished++;
+  let tip=all?`<div class="recommend">✓ Exercise completed. ${type==="bodyweight"?(target>=start+2?"Next session: aim for "+(target+1)+" reps per set.":"Next session target: "+(target+1)+" reps per set."):(target>=start+2?`Next session: increase to ${fmt(w+(state.increments[type]??inc))} kg and reset to ${start} reps.`:`Next session: aim for ${target+1} reps per set.`)}</div>`:"";
+  return `<article class="exercise"><div class="ex-head"><div><div class="ex-title">${name}${uni?" · each side":""}</div><div class="meta">${sets} sets · target ${target} reps${type==="bodyweight"?"":" · start "+start+" reps"}</div></div><div class="weight">${type==="bodyweight"?"BW":fmt(w)+" kg"}<small><br>working weight</small></div></div><div class="set-head"><span>Set</span><span>Reps completed</span><span></span></div>${rows}${tip}<div class="note">Progression: add 1 rep per set per successful session, up to ${start+2} reps. Then increase weight by ${fmt(state.increments[type]??inc)} kg and reset reps to ${start}.${uni?" Log reps for each side combined only if you perform the same reps on both sides; otherwise use the lower side's reps.":""}</div></article>`;
  }).join("");
- document.getElementById("progressText").textContent=doneEx+" / "+p.ex.length+" exercises";document.getElementById("progressFill").style.width=(doneSets/totalSets*100)+"%";
- document.querySelectorAll("[data-reps]").forEach(inp=>inp.onchange=()=>{let [i,s]=inp.dataset.reps.split("-").map(Number);let x=entry(day,i,s);x.reps=inp.value;x.done=false;state.entries[exKey(day,i)+"-"+s]=x;save();render()});
- document.querySelectorAll("[data-tick]").forEach(btn=>btn.onclick=()=>{let [i,s]=btn.dataset.tick.split("-").map(Number);let x=entry(day,i,s);if(!x.reps){alert("Enter the reps you completed first.");return;}x.done=!x.done;state.entries[exKey(day,i)+"-"+s]=x;save();render()});
+ document.getElementById("progressText").textContent=done+" / "+total+" sets completed";document.getElementById("progressFill").style.width=(done/total*100)+"%";
+ document.querySelectorAll("[data-reps]").forEach(inp=>inp.onchange=()=>{let [i,s]=inp.dataset.reps.split("-").map(Number),x=getEntry(day,i,s);x.reps=inp.value;x.done=false;state.entries[id(day,i)+"-"+s]=x;save();render()});
+ document.querySelectorAll("[data-tick]").forEach(b=>b.onclick=()=>{let [i,s]=b.dataset.tick.split("-").map(Number),x=getEntry(day,i,s);if(!x.reps||Number(x.reps)<1){alert("Enter the reps you completed first.");return}x.done=!x.done;state.entries[id(day,i)+"-"+s]=x;save();render()});
 }
-document.getElementById("resetDay").onclick=()=>{if(!confirm("Clear today's set entries? Your saved weights and history will stay."))return;plan[day].ex.forEach((e,i)=>{for(let s=0;s<e[1];s++)delete state.entries[exKey(day,i)+"-"+s]});save();render()};
+document.getElementById("resetDay").onclick=()=>{if(confirm("Clear today's set entries? Saved weights and progression stay.")){plan[day].items.forEach((e,i)=>{for(let s=0;s<e[1];s++)delete state.entries[id(day,i)+"-"+s]});save();render()}};
 document.getElementById("finishDay").onclick=()=>{
- const p=plan[day],summary=[];let increases=0;
- p.ex.forEach((e,i)=>{let [name,sets,min,max,base,type,inc]=e;let xs=Array.from({length:sets},(_,s)=>entry(day,i,s));if(xs.every(x=>x.done)){
-  let reps=xs.map(x=>Number(x.reps));let old=currentWeight(day,i,e);let next=old;
-  if(type!=="bodyweight"&&reps.every(r=>r>=max)){next=old+(state.increments[type]??inc);state.weights[exKey(day,i)]=next;increases++;}
-  summary.push({name,weight:old,next,reps});
+ let p=plan[day],items=[],incs=0;
+ p.items.forEach((e,i)=>{let [name,sets,start,base,type,inc]=e,xs=Array.from({length:sets},(_,s)=>getEntry(day,i,s));if(xs.every(x=>x.done)){
+  let reps=xs.map(x=>Number(x.reps)),w=getW(day,i,e),target=getTarget(day,i,e),next=w,nextTarget=target;
+  if(reps.every(r=>r>=target)){if(target>=start+2){if(type!=="bodyweight"){next=w+(state.increments[type]??inc);state.weights[id(day,i)]=next;incs++}nextTarget=type==="bodyweight"?target+1:start;state.targets[id(day,i)]=nextTarget}else{nextTarget=target+1;state.targets[id(day,i)]=nextTarget}}
+  items.push({name,reps,weight:w,next,nextTarget});
  }});
- if(!summary.length){alert("Log and tick off at least one complete exercise before finishing.");return;}
- state.logs.push({date:new Date().toISOString(),day:day,items:summary});p.ex.forEach((e,i)=>{for(let set=0;set<e[1];set++)delete state.entries[exKey(day,i)+"-"+set]});save();alert("Workout saved! "+increases+" weight increase recommendation(s) applied for next time.");render();renderProgress();
+ if(!items.length){alert("Complete and tick off at least one full exercise first.");return}
+ state.logs.push({date:new Date().toISOString(),day,items});
+ p.items.forEach((e,i)=>{for(let s=0;s<e[1];s++)delete state.entries[id(day,i)+"-"+s]});
+ save();alert("Workout saved. "+incs+" weight increase(s) applied for your next session.");render();renderProgress();
 };
 function renderProgress(){
- document.getElementById("sessions").textContent=state.logs.length;document.getElementById("completed").textContent=state.logs.reduce((a,l)=>a+l.items.reduce((b,x)=>b+x.reps.length,0),0);
- document.getElementById("records").textContent=state.logs.reduce((a,l)=>a+l.items.filter(x=>x.next>x.weight).length,0);
- document.getElementById("history").innerHTML="<b>Recent sessions</b>"+(state.logs.length?state.logs.slice().reverse().slice(0,20).map(l=>`<div class="listitem"><b>${plan[l.day].name} · ${plan[l.day].label}</b><span class="small">${new Date(l.date).toLocaleDateString()} · ${l.items.length} exercises completed</span>${l.items.map(x=>`<div class="small">${x.name}: ${x.reps.join(" / ")} reps · ${fmt(x.weight)} kg${x.next>x.weight?" → "+fmt(x.next)+" kg next":""}</div>`).join("")}</div>`).join(""):'<div class="empty">Your workout history will appear here.</div>');
+ document.getElementById("sessions").textContent=state.logs.length;document.getElementById("completed").textContent=state.logs.reduce((a,l)=>a+l.items.reduce((b,x)=>b+x.reps.length,0),0);document.getElementById("records").textContent=state.logs.reduce((a,l)=>a+l.items.filter(x=>x.next>x.weight).length,0);
+ document.getElementById("history").innerHTML="<b>Recent workouts</b>"+(state.logs.length?state.logs.slice().reverse().slice(0,25).map(l=>`<div class="listitem"><b>${plan[l.day].day} · ${plan[l.day].focus}</b><span class="small">${new Date(l.date).toLocaleDateString()}</span>${l.items.map(x=>`<div class="small">${x.name}: ${x.reps.join(" / ")} reps · ${fmt(x.weight)} kg${x.next>x.weight?" → "+fmt(x.next)+" kg next":""}</div>`).join("")}</div>`).join(""):'<div class="empty">Your workout history will show here after your first completed session.</div>');
 }
-function renderSettings(){
- const names={barbell:"Barbell / EZ bar",dumbbell:"Dumbbells",cable:"Cable stack"};
- document.getElementById("increments").innerHTML=Object.entries(names).map(([k,n])=>`<div class="field"><label>${n}</label><input type="number" min=".25" step=".25" value="${state.increments[k]}" data-inc="${k}"></div>`).join("");
- document.querySelectorAll("[data-inc]").forEach(x=>x.onchange=()=>{state.increments[x.dataset.inc]=Math.max(.25,Number(x.value)||.25);save()});
-}
+function renderSettings(){let labels={barbell:"Barbell / EZ bar",dumbbell:"Dumbbells",cable:"Cable stack"};document.getElementById("increments").innerHTML=Object.entries(labels).map(([k,v])=>`<div style="display:flex;justify-content:space-between;align-items:center;gap:12px;margin:12px 0"><label>${v}</label><input style="max-width:100px" type="number" min=".25" step=".25" value="${state.increments[k]}" data-inc="${k}"></div>`).join("");document.querySelectorAll("[data-inc]").forEach(x=>x.onchange=()=>{state.increments[x.dataset.inc]=Math.max(.25,Number(x.value)||.25);save()})}
 document.querySelectorAll("[data-tab]").forEach(b=>b.onclick=()=>{document.querySelectorAll(".nav button").forEach(x=>x.classList.toggle("active",x===b));document.querySelectorAll(".panel").forEach(x=>x.classList.toggle("active",x.id===b.dataset.tab));if(b.dataset.tab==="progress")renderProgress();if(b.dataset.tab==="settings")renderSettings()});
-document.getElementById("export").onclick=()=>{let blob=new Blob([JSON.stringify(state,null,2)],{type:"application/json"}),a=document.createElement("a");a.href=URL.createObjectURL(blob);a.download="lift-workout-backup.json";a.click();URL.revokeObjectURL(a.href)};
-document.getElementById("importBtn").onclick=()=>document.getElementById("importFile").click();
-document.getElementById("importFile").onchange=async e=>{try{state=JSON.parse(await e.target.files[0].text());save();render();renderProgress();alert("Backup imported.");}catch{alert("That backup file could not be read.")}};
-document.getElementById("clearAll").onclick=()=>{if(confirm("Permanently clear all workout entries, weights and history on this device?")){localStorage.removeItem(key);location.reload()}};
-render();renderProgress();
-if("serviceWorker" in navigator && location.protocol.startsWith("http"))navigator.serviceWorker.register("sw.js");
-</script>
-</body></html>
+document.getElementById("export").onclick=()=>{let a=document.createElement("a"),u=URL.createObjectURL(new Blob([JSON.stringify(state,null,2)],{type:"application/json"}));a.href=u;a.download="lift-workout-backup.json";a.click();URL.revokeObjectURL(u)};
+document.getElementById("importBtn").onclick=()=>document.getElementById("importFile").click();document.getElementById("importFile").onchange=async e=>{try{state=JSON.parse(await e.target.files[0].text());save();render();renderProgress();alert("Backup imported.")}catch{alert("Could not read that backup file.")}};
+document.querySelectorAll("[data-tab]").forEach(()=>{});render();renderProgress();if("serviceWorker"in navigator&&location.protocol.startsWith("http"))navigator.serviceWorker.register("sw.js");
+</script></body></html>

@@ -1,11 +1,11 @@
-LIFT. iPhone Workout Tracker
+LIFT. UPDATED WORKOUT APP
 
-This is a progressive web app (PWA) package. It is not an App Store-signed native iOS app.
-To install it on an iPhone home screen:
-1. Host the contents of this folder on a secure HTTPS website (for example, a GitHub Pages site).
-2. Open the site in Safari on your iPhone.
-3. Tap Share -> Add to Home Screen -> Add.
-4. Launch LIFT from the new home-screen icon.
+Upload all files in this folder to the root of your existing GitHub repository, replacing the old files.
+Then open your existing GitHub Pages URL in Safari and refresh it. If an old version remains, close the app and reopen the site in Safari.
 
-Data is saved in the browser's local storage on that device. Use Settings -> Export backup regularly.
-The app includes the latest five-day plan available from our previous workout discussion. Check starting weights and progression jumps against the equipment available to you before relying on them.
+Progression logic:
+- Each exercise starts at the prescribed rep target.
+- On a fully completed exercise, if every set reaches the target, next session target rises by 1 rep.
+- After reaching prescribed reps +2 on every set, the next session increases weight by the listed increment and resets the target to the prescribed reps.
+- Bodyweight exercises continue adding reps and do not add weight.
+- The current version starts a fresh v2 data store; prior v1 local workout history/weights are not automatically migrated. Export any old backup before replacing if you need it.
