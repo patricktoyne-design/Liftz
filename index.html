@@ -13,110 +13,106 @@ h1{font-size:29px;line-height:1.1;margin:5px 0 7px}.sub{color:var(--muted);font-
 .ex-head{display:flex;justify-content:space-between;gap:10px;align-items:flex-start}.ex-title{font-size:17px;font-weight:750}.meta{color:var(--muted);font-size:12px;margin-top:5px}.weight{font-size:20px;font-weight:800;white-space:nowrap}.weight small{font-size:11px;color:var(--muted);font-weight:500}
 .set-head,.set-row{display:grid;grid-template-columns:42px 1fr 40px;gap:8px;align-items:center}.set-head{font-size:10px;color:var(--muted);text-transform:uppercase;letter-spacing:.8px;margin:18px 0 7px}.set-row{padding:7px 0;border-top:1px solid #292e38}.set-num{font-size:13px;color:var(--muted)}input{width:100%;background:var(--panel2);border:1px solid #353b48;border-radius:9px;color:var(--text);padding:10px 5px;text-align:center;font-size:16px;min-width:0}input:focus{outline:1px solid var(--accent)}.tick{width:34px;height:34px;border-radius:10px;border:1px solid #48505e;background:transparent;color:var(--muted);font-size:18px}.tick.done{background:var(--accent);border-color:var(--accent);color:#111}
 .note{font-size:12px;color:var(--muted);margin-top:12px;line-height:1.45}.recommend{border-radius:11px;padding:11px;margin-top:12px;background:#202a1b;color:var(--accent);font-size:13px;line-height:1.45}.actions{display:flex;gap:9px;margin:18px 0}.btn{border:0;border-radius:12px;padding:13px 15px;font-weight:750;font-size:14px;background:var(--accent);color:#12150e;flex:1}.btn.secondary{background:var(--panel2);border:1px solid var(--line);color:var(--text)}.nav{position:fixed;bottom:0;left:0;right:0;background:#14171df2;border-top:1px solid var(--line);padding:10px 16px calc(10px + env(safe-area-inset-bottom));display:flex;justify-content:center;gap:10px;backdrop-filter:blur(15px)}.nav button{background:transparent;border:0;color:var(--muted);font-weight:700;padding:8px 15px}.nav button.active{color:var(--accent)}
-[hidden]{display:none!important}.edit{display:grid;grid-template-columns:1fr 46px 46px 64px;gap:6px;margin:8px 0;align-items:center}.edit input{padding:9px 3px;font-size:14px}.edit input.nm{text-align:left;padding-left:8px}.edit-head{font-size:10px;color:var(--muted);text-transform:uppercase;letter-spacing:.6px;margin-top:12px}.panel{display:none}.panel.active{display:block}.statgrid{display:grid;grid-template-columns:repeat(3,1fr);gap:8px}.stat{background:var(--panel2);border-radius:12px;padding:13px}.stat b{font-size:23px;display:block}.stat span{font-size:11px;color:var(--muted)}.small{font-size:12px;color:var(--muted)}.listitem{padding:12px 0;border-top:1px solid var(--line)}.empty{color:var(--muted);text-align:center;padding:30px 10px}
+[hidden]{display:none!important}.edit{display:grid;grid-template-columns:1fr 46px 46px 64px;gap:6px;margin:8px 0;align-items:center}.edit input{padding:9px 3px;font-size:14px}.edit input.nm{text-align:left;padding-left:8px}.edit-head{font-size:10px;color:var(--muted);text-transform:uppercase;letter-spacing:.6px;margin-top:12px}.exrow{border-top:1px solid #292e38;padding:12px 0}.exrow-top{display:flex;gap:6px;align-items:center}.exrow-top .nm{flex:1;text-align:left;padding:10px 8px;font-size:15px}.mini{width:36px;height:38px;border-radius:9px;border:1px solid #48505e;background:var(--panel2);color:var(--text);font-size:16px;flex:none}.mini.del{color:#ff8a80}.exrow-nums{display:grid;grid-template-columns:repeat(4,1fr);gap:6px;margin-top:8px}.exrow-nums label{font-size:10px;color:var(--muted);text-transform:uppercase;letter-spacing:.4px;display:block}.exrow-nums input{margin-top:4px;padding:9px 2px;font-size:15px}.chk{display:flex;align-items:center;gap:8px;font-size:12px;color:var(--muted);margin-top:8px}.chk input{width:auto}.addrow{background:#14171d;border-radius:12px;padding:12px;margin-top:12px;border:1px dashed #3a4150}.panel{display:none}.panel.active{display:block}.statgrid{display:grid;grid-template-columns:repeat(3,1fr);gap:8px}.stat{background:var(--panel2);border-radius:12px;padding:13px}.stat b{font-size:23px;display:block}.stat span{font-size:11px;color:var(--muted)}.small{font-size:12px;color:var(--muted)}.listitem{padding:12px 0;border-top:1px solid var(--line)}.empty{color:var(--muted);text-align:center;padding:30px 10px}
 </style></head><body><main>
-<div class="top"><div class="logo">LIFT.</div><div class="pill">PATRICK · HYPERTROPHY</div></div>
+<div class="top"><div class="logo">LIFT.</div><div class="pill">PROGRESSIVE OVERLOAD</div></div>
 <section id="workout" class="panel active"><div class="sub" id="daylabel"></div><h1 id="daytitle">Today's workout</h1><div class="days" id="days"></div>
-<div class="recommend" id="firstrun" hidden>Welcome, Patrick. The starting weights are conservative placeholders. Open <b>Settings</b> and set your real working weights (and swap any exercise) before your first session. <button class="btn secondary" id="dismissFirst" style="margin-top:10px;width:100%">Got it</button></div><div class="progressbox"><div class="progressrow"><b>Workout progress</b><span id="progressText">0 sets completed</span></div><div class="bar"><div class="fill" id="progressFill"></div></div></div>
+<div class="recommend" id="firstrun" hidden>Your plan is loaded. Check the starting weights are right for you, and add, remove or edit exercises any time in <b>Settings</b>. <button class="btn secondary" id="dismissFirst" style="margin-top:10px;width:100%">Got it</button></div><div class="progressbox"><div class="progressrow"><b>Workout progress</b><span id="progressText">0 sets completed</span></div><div class="bar"><div class="fill" id="progressFill"></div></div></div>
 <div id="exerciseList"></div><div class="actions"><button class="btn secondary" id="resetDay">Reset today's entries</button><button class="btn" id="finishDay">Finish workout</button></div></section>
 <section id="progress" class="panel"><div class="sub">YOUR TRAINING</div><h1>Progress</h1><div class="statgrid"><div class="stat"><b id="sessions">0</b><span>Sessions logged</span></div><div class="stat"><b id="completed">0</b><span>Sets completed</span></div><div class="stat"><b id="records">0</b><span>Weight increases</span></div></div><div class="summary"><b>Your progression system</b><p class="note">Each exercise starts at your prescribed reps. Add 1 rep to the target each successful session until you reach +2 reps per set. Once every set reaches that top target, weight increases by the exercise's increment and the rep target resets to your prescribed starting reps. Bodyweight exercises build reps without adding weight.</p></div><div class="history" id="history"></div></section>
-<section id="settings" class="panel"><div class="sub">PERSONALISE</div><h1>Settings</h1><div class="summary"><b>Weight increments</b><p class="note">Adjust these default jumps to suit your available plates, dumbbells and cable stack.</p><div id="increments"></div></div><div id="planEditor"></div><div class="summary"><b>Backup your data</b><p class="note">Your workout history is saved on this device. Export a backup regularly.</p><div class="actions"><button class="btn secondary" id="export">Export backup</button><button class="btn secondary" id="importBtn">Import backup</button><input id="importFile" type="file" accept="application/json" hidden></div></div></section>
+<section id="settings" class="panel"><div class="sub">PERSONALISE</div><h1>Settings</h1><div class="summary"><b>Your plan</b><p class="note">Edit, add, remove or reorder exercises for each day. Leave Weight empty (or 0) for a bodyweight exercise, which then progresses by reps only. Jump is how many kg get added when you hit your top reps.</p><button class="btn secondary" id="resetPlan" style="width:100%">Reset plan to default</button></div><div id="planEditor"></div><div class="summary"><b>Backup your data</b><p class="note">Your workout history is saved on this device. Export a backup regularly.</p><div class="actions"><button class="btn secondary" id="export">Export backup</button><button class="btn secondary" id="importBtn">Import backup</button><input id="importFile" type="file" accept="application/json" hidden></div></div></section>
 </main><nav class="nav"><button class="active" data-tab="workout">Workout</button><button data-tab="progress">Progress</button><button data-tab="settings">Settings</button></nav>
 <script>
-const plan=[
-{day:"Monday",focus:"Chest & Triceps · Heavy pressing",items:[
-["Barbell Bench Press",4,8,60,"barbell",2.5,false],
-["Incline Dumbbell Press",3,10,20,"dumbbell",2,false],
-["Cable Chest Fly",3,12,10,"cable",2.5,false],
-["Dips (power tower)",3,10,0,"bodyweight",0,false],
-["Cable Tricep Pushdown",3,12,20,"cable",2.5,false],
-["Overhead Cable Tricep Extension",3,12,15,"cable",2.5,false]]},
-{day:"Tuesday",focus:"Back & Biceps · Width and thickness",items:[
-["Pull-Ups (power tower)",4,8,0,"bodyweight",0,false],
-["Barbell Row",4,8,50,"barbell",2.5,false],
-["One-Arm Dumbbell Row",3,10,24,"dumbbell",2,true],
-["Cable Lat Pulldown",3,10,45,"cable",2.5,false],
-["EZ Bar / Barbell Curl",3,10,25,"barbell",2.5,false],
-["Incline Dumbbell Curl",3,12,10,"dumbbell",2,false]]},
-{day:"Wednesday",focus:"Legs & Abs · Your one leg day",items:[
-["Barbell Back Squat",4,6,70,"barbell",2.5,false],
-["Barbell Romanian Deadlift",3,8,60,"barbell",2.5,false],
-["Leg Extension (leg attachment)",3,12,30,"cable",2.5,false],
-["Dumbbell Bulgarian Split Squat",3,10,14,"dumbbell",2,true],
-["Standing Calf Raise",4,12,60,"barbell",2.5,false],
-["Hanging Leg Raise (power tower)",3,10,0,"bodyweight",0,false],
-["Cable Crunch",3,12,25,"cable",2.5,false]]},
-{day:"Thursday",focus:"Shoulders & Traps · Delts and upper back",items:[
-["Barbell Overhead Press",4,8,40,"barbell",2.5,false],
-["Dumbbell Lateral Raise",4,12,8,"dumbbell",1,false],
-["Seated Dumbbell Shoulder Press",3,10,18,"dumbbell",2,false],
-["Cable Face Pull",3,12,20,"cable",2.5,false],
-["Barbell Shrug",4,10,60,"barbell",2.5,false]]},
-{day:"Friday",focus:"Arms & Weak Points · Volume and detail",items:[
-["Close-Grip Bench Press",3,8,50,"barbell",2.5,false],
-["EZ Bar / Barbell Curl",3,10,25,"barbell",2.5,false],
-["Cable Rope Pushdown",3,12,20,"cable",2.5,false],
-["Hammer Curl",3,10,14,"dumbbell",2,false],
-["Dumbbell Overhead Tricep Extension",3,12,16,"dumbbell",2,false],
-["Wrist Curl (weak point, swap as needed)",3,15,15,"barbell",2.5,false],
-["Dumbbell Lateral Raise (weak point, swap as needed)",3,15,6,"dumbbell",1,false]]}
-];
-const KEY="lift_tracker_v3";
-const DEFAULTS=()=>({weights:{},targets:{},logs:[],entries:{},custom:{},seen:false,increments:{barbell:2.5,dumbbell:2,cable:2.5}});
-const normalize=o=>{const d=DEFAULTS();o=o&&typeof o==="object"?o:{};return Object.assign(d,o,{increments:Object.assign(d.increments,o.increments||{})})};
-let state;try{state=normalize(JSON.parse(localStorage.getItem(KEY)||"null"))}catch{state=DEFAULTS()}
+const uid=()=>"e"+Math.random().toString(36).slice(2,9);
+const DAYS=[["Monday","Push · Chest, Shoulders & Triceps"],["Tuesday","Pull · Back, Rear Delts & Biceps"],["Wednesday","Legs & Abs"],["Thursday","Upper · Chest, Back & Strength"],["Friday","Shoulders & Arms"]];
+// [name, sets, reps, kg (0 = bodyweight), jump kg, each side]
+const SEED=[
+[["Bench Press",4,8,31.25,2.5],["Incline Dumbbell Press",3,8,26,2],["Seated Dumbbell Shoulder Press",3,9,17.5,2],["Dumbbell Lateral Raise",3,8,8.5,1],["Cable Tricep Pushdown",3,9,10,2.5],["Overhead Cable Tricep Extension",2,10,7.5,2.5]],
+[["High Cable Lat Pulldown",4,9,22.5,2.5],["Barbell Row",3,10,20,2.5],["One-Arm Dumbbell Row",3,11,26,2,1],["High Cable Face Pull",3,9,16,2.5],["EZ Bar Curl",3,12,15,2.5],["Cross-Body Cable Pulldown",2,12,5,2.5,1]],
+[["Barbell Back Squat",4,6,45,2.5],["Dumbbell Romanian Deadlift",3,9,17.5,2],["Goblet Squat",3,11,15,2],["Standing Calf Raises",4,9,55,2.5],["Reverse Crunches",3,10,0,0],["Ab Rollouts",3,9,0,0]],
+[["Incline Bench Press",4,8,27.5,2.5],["Cable Lat Pulldown",4,8,22.5,2.5],["Dumbbell Bench Press",3,9,26,2],["Cable Seated Row",3,8,30,2.5],["Ab Rollouts",3,9,0,0],["Rear Delt Dumbbell Fly",3,10,4,1]],
+[["Barbell Overhead Press",3,8,17.5,2.5],["Cable Lateral Raise",3,9,2,1],["Cable Curl",3,9,12.5,2.5],["Overhead Cable Tricep Extension",3,11,7.5,2.5],["Hammer Curl",3,10,16,2],["Cable Tricep Pushdown",3,10,10,2.5],["Reverse Crunches",3,11,0,0]]];
+const seedPlan=()=>DAYS.map((d,di)=>({day:d[0],focus:d[1],items:SEED[di].map(r=>({u:uid(),name:r[0],sets:r[1],start:r[2],w:r[3],inc:r[4],uni:!!r[5],t:r[2]}))}));
+const validPlan=p=>Array.isArray(p)&&p.length===5&&p.every(d=>d&&Array.isArray(d.items)&&d.items.every(e=>e&&e.u&&typeof e.name==="string"&&e.sets>0&&e.start>0));
+const normalize=o=>{o=o&&typeof o==="object"?o:{};const s=Object.assign({plan:null,logs:[],entries:{},seen:false},o);if(!validPlan(s.plan))s.plan=seedPlan();if(!Array.isArray(s.logs))s.logs=[];if(!s.entries||typeof s.entries!=="object")s.entries={};s.plan.forEach(d=>d.items.forEach(e=>{if(!(e.t>0))e.t=e.start}));return s};
+const KEY="lift_tracker_v4";
+let state;try{state=normalize(JSON.parse(localStorage.getItem(KEY)||"null"))}catch{state=normalize(null)}
 let day=(new Date().getDay()+6)%7;if(day>4)day=0;
-const id=(d,i)=>d+"-"+i, getW=(d,i,e)=>state.weights[id(d,i)]??e[3], getTarget=(d,i,e)=>state.targets[id(d,i)]??e[2];
-const X=(d,i)=>{const e=plan[d].items[i].slice(),c=state.custom[id(d,i)];if(c){if(c.name)e[0]=c.name;if(c.sets)e[1]=c.sets;if(c.start)e[2]=c.start}return e};
-const getEntry=(d,i,s)=>state.entries[id(d,i)+"-"+s]||{reps:"",done:false};
+const isBW=e=>!(e.w>0), inc=e=>e.inc>0?e.inc:2.5;
+const esc=t=>String(t).replace(/&/g,"&amp;").replace(/</g,"&lt;").replace(/>/g,"&gt;").replace(/"/g,"&quot;");
+const getEntry=(u,s)=>state.entries[u+"-"+s]||{reps:"",done:false};
 const fmt=n=>Number.isInteger(n)?String(n):String(Number(n.toFixed(2)));
 function save(){try{localStorage.setItem(KEY,JSON.stringify(state))}catch{}}
-function renderDays(){document.getElementById("days").innerHTML=plan.map((p,i)=>`<button class="day ${day===i?"active":""}" data-day="${i}">${p.day.slice(0,3).toUpperCase()}</button>`).join("");document.querySelectorAll("[data-day]").forEach(b=>b.onclick=()=>{day=+b.dataset.day;render()})}
+const clearEntries=u=>{for(let s=0;s<60;s++)delete state.entries[u+"-"+s]};
+function renderDays(){document.getElementById("days").innerHTML=state.plan.map((p,i)=>`<button class="day ${day===i?"active":""}" data-day="${i}">${p.day.slice(0,3).toUpperCase()}</button>`).join("");document.querySelectorAll("[data-day]").forEach(b=>b.onclick=()=>{day=+b.dataset.day;render()})}
 function render(){
- const p=plan[day];document.getElementById("daylabel").textContent=p.day.toUpperCase()+" · "+p.focus.toUpperCase();document.getElementById("daytitle").textContent=p.focus.split(" · ")[0];renderDays();
- let done=0,total=0,finished=0;
- document.getElementById("exerciseList").innerHTML=p.items.map((e0,i)=>{
-  const e=X(day,i),[name,sets,start,base,type,inc,uni]=e,w=getW(day,i,e),target=getTarget(day,i,e);let all=true,rows="";
-  for(let s=0;s<sets;s++){let x=getEntry(day,i,s);total++;if(x.done){done++;}else all=false;rows+=`<div class="set-row"><div class="set-num">Set ${s+1}</div><input type="number" min="0" max="99" placeholder="Target ${target}" value="${x.reps}" data-reps="${i}-${s}"><button class="tick ${x.done?"done":""}" data-tick="${i}-${s}">${x.done?"✓":"○"}</button></div>`}
-  if(all)finished++;
-  let tip=all?`<div class="recommend">✓ Exercise completed. ${type==="bodyweight"?(target>=start+2?"Next session: aim for "+(target+1)+" reps per set.":"Next session target: "+(target+1)+" reps per set."):(target>=start+2?`Next session: increase to ${fmt(w+(state.increments[type]??inc))} kg and reset to ${start} reps.`:`Next session: aim for ${target+1} reps per set.`)}</div>`:"";
-  return `<article class="exercise"><div class="ex-head"><div><div class="ex-title">${name}${uni?" · each side":""}</div><div class="meta">${sets} sets · target ${target} reps${type==="bodyweight"?"":" · start "+start+" reps"}</div></div><div class="weight">${type==="bodyweight"?"BW":fmt(w)+" kg"}<small><br>working weight</small></div></div><div class="set-head"><span>Set</span><span>Reps completed</span><span></span></div>${rows}${tip}<div class="note">Progression: add 1 rep per set per successful session, up to ${start+2} reps. Then increase weight by ${fmt(state.increments[type]??inc)} kg and reset reps to ${start}.${uni?" Log reps for each side combined only if you perform the same reps on both sides; otherwise use the lower side's reps.":""}</div></article>`;
- }).join("");
- document.getElementById("progressText").textContent=done+" / "+total+" sets completed";document.getElementById("progressFill").style.width=(done/total*100)+"%";
- document.querySelectorAll("[data-reps]").forEach(inp=>inp.onchange=()=>{let [i,s]=inp.dataset.reps.split("-").map(Number),x=getEntry(day,i,s);const was=x.done;x.reps=inp.value;x.done=false;state.entries[id(day,i)+"-"+s]=x;save();if(was)render()});
- document.querySelectorAll("[data-tick]").forEach(b=>b.onclick=()=>{let [i,s]=b.dataset.tick.split("-").map(Number),x=getEntry(day,i,s);if(!x.reps||Number(x.reps)<1){alert("Enter the reps you completed first.");return}x.done=!x.done;state.entries[id(day,i)+"-"+s]=x;save();render()});
+ const p=state.plan[day];document.getElementById("daylabel").textContent=p.day.toUpperCase()+" · "+p.focus.toUpperCase();document.getElementById("daytitle").textContent=p.focus.split(" · ")[0];renderDays();
+ let done=0,total=0;
+ document.getElementById("exerciseList").innerHTML=p.items.length?p.items.map(e=>{
+  const bw=isBW(e),target=e.t;let all=true,rows="";
+  for(let s=0;s<e.sets;s++){const x=getEntry(e.u,s);total++;if(x.done)done++;else all=false;rows+=`<div class="set-row"><div class="set-num">Set ${s+1}</div><input type="number" min="0" max="99" placeholder="Target ${target}" value="${x.reps}" data-reps="${e.u}-${s}"><button class="tick ${x.done?"done":""}" data-tick="${e.u}-${s}">${x.done?"✓":"○"}</button></div>`}
+  const tip=all?`<div class="recommend">✓ Exercise completed. ${bw?"Next session target: "+(target+1)+" reps per set.":(target>=e.start+2?`Next session: increase to ${fmt(e.w+inc(e))} kg and reset to ${e.start} reps.`:`Next session: aim for ${target+1} reps per set.`)}</div>`:"";
+  return `<article class="exercise"><div class="ex-head"><div><div class="ex-title">${esc(e.name)}${e.uni?" · each side":""}</div><div class="meta">${e.sets} sets · target ${target} reps${bw?"":" · start "+e.start+" reps"}</div></div><div class="weight">${bw?"BW":fmt(e.w)+" kg"}<small><br>${bw?"no added weight":"working weight"}</small></div></div><div class="set-head"><span>Set</span><span>Reps completed</span><span></span></div>${rows}${tip}<div class="note">Progression: add 1 rep per set per successful session${bw?", no weight added.":`, up to ${e.start+2} reps. Then increase weight by ${fmt(inc(e))} kg and reset reps to ${e.start}.`}${e.uni?" Log reps for the weaker side if the sides differ.":""}</div></article>`;
+ }).join(""):'<div class="empty">No exercises for this day. Add some in Settings.</div>';
+ document.getElementById("progressText").textContent=done+" / "+total+" sets completed";document.getElementById("progressFill").style.width=(total?done/total*100:0)+"%";
+ document.querySelectorAll("[data-reps]").forEach(inp=>inp.onchange=()=>{const [u,s]=inp.dataset.reps.split("-"),x=getEntry(u,s),was=x.done;x.reps=inp.value;x.done=false;state.entries[u+"-"+s]=x;save();if(was)render()});
+ document.querySelectorAll("[data-tick]").forEach(b=>b.onclick=()=>{const [u,s]=b.dataset.tick.split("-"),x=getEntry(u,s);if(!x.reps||Number(x.reps)<1){alert("Enter the reps you completed first.");return}x.done=!x.done;state.entries[u+"-"+s]=x;save();render()});
 }
-document.getElementById("resetDay").onclick=()=>{if(confirm("Clear today's set entries? Saved weights and progression stay.")){plan[day].items.forEach((e0,i)=>{const e=X(day,i);for(let s=0;s<e[1]+20;s++)delete state.entries[id(day,i)+"-"+s]});save();render()}};
+document.getElementById("resetDay").onclick=()=>{if(confirm("Clear today's set entries? Saved weights and progression stay.")){state.plan[day].items.forEach(e=>clearEntries(e.u));save();render()}};
 document.getElementById("finishDay").onclick=()=>{
- let p=plan[day],items=[],incs=0;
- p.items.forEach((e0,i)=>{let e=X(day,i),[name,sets,start,base,type,inc]=e,xs=Array.from({length:sets},(_,s)=>getEntry(day,i,s));if(xs.every(x=>x.done)){
-  let reps=xs.map(x=>Number(x.reps)),w=getW(day,i,e),target=getTarget(day,i,e),next=w,nextTarget=target;
-  if(reps.every(r=>r>=target)){if(target>=start+2){if(type!=="bodyweight"){next=w+(state.increments[type]??inc);state.weights[id(day,i)]=next;incs++}nextTarget=type==="bodyweight"?target+1:start;state.targets[id(day,i)]=nextTarget}else{nextTarget=target+1;state.targets[id(day,i)]=nextTarget}}
-  items.push({name,reps,weight:w,next,nextTarget});
- }});
+ const p=state.plan[day],items=[];let incs=0;
+ p.items.forEach(e=>{const xs=Array.from({length:e.sets},(_,s)=>getEntry(e.u,s));if(xs.length&&xs.every(x=>x.done)){
+  const reps=xs.map(x=>Number(x.reps)),w=e.w,bw=isBW(e),target=e.t;let next=w,nt=target;
+  if(reps.every(r=>r>=target)){if(target>=e.start+2){if(!bw){next=w+inc(e);e.w=next;incs++}nt=bw?target+1:e.start;e.t=nt}else{nt=target+1;e.t=nt}}
+  items.push({name:e.name,reps,weight:w,next,nextTarget:nt,bw})}});
  if(!items.length){alert("Complete and tick off at least one full exercise first.");return}
- state.logs.push({date:new Date().toISOString(),day,items});
- p.items.forEach((e0,i)=>{for(let s=0;s<40;s++)delete state.entries[id(day,i)+"-"+s]});
+ state.logs.push({date:new Date().toISOString(),day,dayName:p.day,focus:p.focus,items});
+ p.items.forEach(e=>clearEntries(e.u));
  save();alert("Workout saved. "+incs+" weight increase(s) applied for your next session.");render();renderProgress();
 };
 function renderProgress(){
  document.getElementById("sessions").textContent=state.logs.length;document.getElementById("completed").textContent=state.logs.reduce((a,l)=>a+l.items.reduce((b,x)=>b+x.reps.length,0),0);document.getElementById("records").textContent=state.logs.reduce((a,l)=>a+l.items.filter(x=>x.next>x.weight).length,0);
- document.getElementById("history").innerHTML="<b>Recent workouts</b>"+(state.logs.length?state.logs.slice().reverse().slice(0,25).map(l=>`<div class="listitem"><b>${plan[l.day].day} · ${plan[l.day].focus}</b><span class="small">${new Date(l.date).toLocaleDateString()}</span>${l.items.map(x=>`<div class="small">${x.name}: ${x.reps.join(" / ")} reps · ${fmt(x.weight)} kg${x.next>x.weight?" → "+fmt(x.next)+" kg next":""}</div>`).join("")}</div>`).join(""):'<div class="empty">Your workout history will show here after your first completed session.</div>');
+ document.getElementById("history").innerHTML="<b>Recent workouts</b>"+(state.logs.length?state.logs.slice().reverse().slice(0,25).map(l=>`<div class="listitem"><b>${esc(l.dayName||state.plan[l.day]?.day||"")} · ${esc(l.focus||state.plan[l.day]?.focus||"")}</b> <span class="small">${new Date(l.date).toLocaleDateString()}</span>${l.items.map(x=>`<div class="small">${esc(x.name)}: ${x.reps.join(" / ")} reps · ${x.bw||!(x.weight>0)?"BW":fmt(x.weight)+" kg"}${x.next>x.weight?" → "+fmt(x.next)+" kg next":""}</div>`).join("")}</div>`).join(""):'<div class="empty">Your workout history will show here after your first completed session.</div>');
 }
+const num=(v,min,max,dflt)=>{const n=Number(v);return Number.isFinite(n)&&v!==""?Math.min(max,Math.max(min,n)):dflt};
 function renderEditor(){
- document.getElementById("planEditor").innerHTML=plan.map((p,d)=>`<div class="summary"><b>${p.day} · ${p.focus.split(" · ")[0]}</b><div class="edit edit-head"><span>Exercise</span><span>Sets</span><span>Reps</span><span>kg</span></div>${p.items.map((e0,i)=>{const e=X(d,i),bw=e[4]==="bodyweight";return `<div class="edit"><input class="nm" type="text" value="${e[0].replace(/"/g,"&quot;")}" data-ed="${d}-${i}-name"><input type="number" min="1" max="10" value="${e[1]}" data-ed="${d}-${i}-sets"><input type="number" min="1" max="50" value="${e[2]}" data-ed="${d}-${i}-start"><input type="number" min="0" step=".25" value="${bw?0:getW(d,i,e)}" ${bw?"disabled":""} data-ed="${d}-${i}-w"></div>`}).join("")}</div>`).join("");
- document.querySelectorAll("[data-ed]").forEach(inp=>inp.onchange=()=>{
-  const [d,i,f]=inp.dataset.ed.split("-"),k=id(+d,+i),c=state.custom[k]=state.custom[k]||{};
-  if(f==="name"){c.name=inp.value.trim()||undefined}
-  else if(f==="sets"){c.sets=Math.min(10,Math.max(1,Math.round(Number(inp.value))||1))}
-  else if(f==="start"){c.start=Math.min(50,Math.max(1,Math.round(Number(inp.value))||1));delete state.targets[k]}
-  else{state.weights[k]=Math.max(0,Number(inp.value)||0);delete state.targets[k]}
-  save();render();renderEditor()});
+ document.getElementById("planEditor").innerHTML=state.plan.map((p,d)=>`<div class="summary" data-d="${d}"><b>${p.day} · ${esc(p.focus.split(" · ")[0])}</b>${p.items.map(e=>`<div class="exrow" data-u="${e.u}"><div class="exrow-top"><input class="nm" type="text" value="${esc(e.name)}" data-f="name" aria-label="Exercise name"><button class="mini" data-act="up" aria-label="Move up">↑</button><button class="mini" data-act="down" aria-label="Move down">↓</button><button class="mini del" data-act="del" aria-label="Remove">✕</button></div><div class="exrow-nums"><label>Sets<input type="number" min="1" max="10" value="${e.sets}" data-f="sets"></label><label>Reps<input type="number" min="1" max="50" value="${e.start}" data-f="start"></label><label>Weight kg<input type="number" min="0" step=".25" value="${e.w>0?e.w:""}" placeholder="BW" data-f="w"></label><label>Jump kg<input type="number" min="0" step=".25" value="${e.inc}" data-f="inc"></label></div><label class="chk"><input type="checkbox" ${e.uni?"checked":""} data-f="uni"> Each side</label></div>`).join("")||'<div class="small" style="margin:10px 0">No exercises yet.</div>'}<div class="exrow addrow"><b class="small">Add exercise</b><div class="exrow-top"><input class="nm" type="text" placeholder="Exercise name" data-add="name"></div><div class="exrow-nums"><label>Sets<input type="number" min="1" max="10" value="3" data-add="sets"></label><label>Reps<input type="number" min="1" max="50" value="10" data-add="start"></label><label>Weight kg<input type="number" min="0" step=".25" placeholder="BW" data-add="w"></label><label>Jump kg<input type="number" min="0" step=".25" value="2.5" data-add="inc"></label></div><button class="btn" data-act="add" style="margin-top:10px;width:100%">Add to ${p.day}</button></div></div>`).join("");
 }
-function renderSettings(){renderEditor();let labels={barbell:"Barbell / EZ bar",dumbbell:"Dumbbells",cable:"Cable stack"};document.getElementById("increments").innerHTML=Object.entries(labels).map(([k,v])=>`<div style="display:flex;justify-content:space-between;align-items:center;gap:12px;margin:12px 0"><label>${v}</label><input style="max-width:100px" type="number" min=".25" step=".25" value="${state.increments[k]}" data-inc="${k}"></div>`).join("");document.querySelectorAll("[data-inc]").forEach(x=>x.onchange=()=>{state.increments[x.dataset.inc]=Math.max(.25,Number(x.value)||.25);save()})}
+const ed=document.getElementById("planEditor");
+ed.addEventListener("change",ev=>{
+ const f=ev.target.closest("[data-f]");if(!f)return;
+ const e=state.plan[+f.closest("[data-d]").dataset.d].items.find(x=>x.u===f.closest("[data-u]").dataset.u);if(!e)return;
+ const k=f.dataset.f;
+ if(k==="name")e.name=f.value.trim()||e.name;
+ else if(k==="sets")e.sets=Math.round(num(f.value,1,10,e.sets));
+ else if(k==="start"){e.start=Math.round(num(f.value,1,50,e.start));e.t=e.start}
+ else if(k==="w"){e.w=num(f.value,0,1000,0);e.t=e.start}
+ else if(k==="inc")e.inc=num(f.value,0,100,e.inc);
+ else if(k==="uni")e.uni=f.checked;
+ save();render();renderEditor();
+});
+ed.addEventListener("click",ev=>{
+ const b=ev.target.closest("[data-act]");if(!b)return;
+ const card=b.closest("[data-d]"),d=+card.dataset.d,items=state.plan[d].items,act=b.dataset.act;
+ if(act==="add"){
+  const g=k=>card.querySelector(`[data-add="${k}"]`),name=g("name").value.trim();
+  if(!name){alert("Give the exercise a name first.");return}
+  const start=Math.round(num(g("start").value,1,50,10));
+  items.push({u:uid(),name,sets:Math.round(num(g("sets").value,1,10,3)),start,w:num(g("w").value,0,1000,0),inc:num(g("inc").value,0,100,2.5),uni:false,t:start});
+ }else{
+  const u=b.closest("[data-u]").dataset.u,i=items.findIndex(x=>x.u===u);if(i<0)return;
+  if(act==="del"){if(!confirm("Remove "+items[i].name+" from "+state.plan[d].day+"? Your logged history stays.")){return}clearEntries(u);items.splice(i,1)}
+  else if(act==="up"&&i>0)[items[i-1],items[i]]=[items[i],items[i-1]];
+  else if(act==="down"&&i<items.length-1)[items[i+1],items[i]]=[items[i],items[i+1]];
+ }
+ save();render();renderEditor();
+});
+document.getElementById("resetPlan").onclick=()=>{if(confirm("Reset all five days back to the default plan and weights? Your workout history stays.")){state.plan=seedPlan();state.entries={};save();render();renderEditor()}};
+function renderSettings(){renderEditor()}
 document.querySelectorAll("[data-tab]").forEach(b=>b.onclick=()=>{document.querySelectorAll(".nav button").forEach(x=>x.classList.toggle("active",x===b));document.querySelectorAll(".panel").forEach(x=>x.classList.toggle("active",x.id===b.dataset.tab));if(b.dataset.tab==="progress")renderProgress();if(b.dataset.tab==="settings")renderSettings()});
 document.getElementById("export").onclick=()=>{let a=document.createElement("a"),u=URL.createObjectURL(new Blob([JSON.stringify(state,null,2)],{type:"application/json"}));a.href=u;a.download="lift-workout-backup.json";a.click();URL.revokeObjectURL(u)};
-document.getElementById("importBtn").onclick=()=>document.getElementById("importFile").click();document.getElementById("importFile").onchange=async e=>{try{state=normalize(JSON.parse(await e.target.files[0].text()));save();render();renderProgress();alert("Backup imported.");renderSettings()}catch{alert("Could not read that backup file.")}};
+document.getElementById("importBtn").onclick=()=>document.getElementById("importFile").click();
+document.getElementById("importFile").onchange=async e=>{try{state=normalize(JSON.parse(await e.target.files[0].text()));save();render();renderProgress();renderSettings();alert("Backup imported.")}catch{alert("Could not read that backup file.")}};
 const fr=document.getElementById("firstrun");fr.hidden=state.seen;document.getElementById("dismissFirst").onclick=()=>{state.seen=true;save();fr.hidden=true};
 render();renderProgress();if("serviceWorker"in navigator&&location.protocol.startsWith("http"))navigator.serviceWorker.register("sw.js");
 </script></body></html>
